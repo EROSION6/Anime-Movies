@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+	img {
+		transition: filter 0.4s ease;
+	}
+	&:hover {
+		img {
+			filter: brightness(55%);
+		}
+	}
+}
