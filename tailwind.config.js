@@ -6,6 +6,7 @@ export default {
 			colors: {
 				white: {
 					100: '#F5F5F5',
+					200: '#E3E3E3',
 				},
 				brown: {
 					400: '#924444',
@@ -18,6 +19,9 @@ export default {
 				pink: {
 					100: '#F87A61',
 					200: '#E84444',
+				},
+				green: {
+					300: '#37AD43',
 				},
 			},
 			screens: {
