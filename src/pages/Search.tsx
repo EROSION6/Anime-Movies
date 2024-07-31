@@ -1,6 +1,5 @@
 import { Card } from '@/components/Movies/Card'
 import { Button } from '@/components/UI/Button'
-import { pagination } from '@/data'
 import { fetchMoviesData } from '@/store/getAllMovies'
 import '@/styles/index.scss'
 import { MovieCard } from '@/types'
@@ -10,7 +9,6 @@ export const Search = () => {
 	const { getMovies, movies } = fetchMoviesData
 	const [search, setSearch] = useState('')
 	const [filteredMovies, setFilteredMovies] = useState<MovieCard[]>(movies)
-	const [isActive, setActive] = useState(1)
 
 	useEffect(() => {
 		getMovies()
@@ -50,21 +48,6 @@ export const Search = () => {
 			>
 				{filteredMovies.map(mov => (
 					<Card key={mov.mal_id} {...mov} />
-				))}
-			</div>
-			<div className='w-full flex justify-center gap-x-2 mt-5'>
-				{pagination.map((pag, i) => (
-					<button
-						key={i}
-						className={`py-1 px-3 rounded-md text-lg ${
-							isActive === i
-								? 'bg-gray-300 text-white-100'
-								: 'bg-transparent text-gray-400'
-						}`}
-						onClick={() => setActive(i)}
-					>
-						{pag}
-					</button>
 				))}
 			</div>
 		</div>

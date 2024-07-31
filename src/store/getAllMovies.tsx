@@ -12,9 +12,9 @@ class fetchMovies {
 		makeAutoObservable(this)
 	}
 
-	getMovies = async () => {
+	getMovies = async (page?: number | string) => {
 		try {
-			const res = await fetch('https://api.jikan.moe/v4/top/anime')
+			const res = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
 			if (!res.ok) {
 				throw new Error('Fetching response anime error')
 			}

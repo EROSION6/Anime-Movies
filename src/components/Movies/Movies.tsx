@@ -1,19 +1,28 @@
 import { advantages, categories } from '@/data'
-import { useEffect, useState } from 'react'
-// import { fetchMoviesData } from '@/store/getAllMovies'
 import { fetchMoviesData } from '@/store/getAllMovies'
+import { TypeCategories } from '@/types'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from './Card'
 
 export const Movies = () => {
-	const [isActive, setActive] = useState(0)
+	const [isActive, setActive] = useState('Все')
+	const [currentPage, setCurrentPage] = useState(1)
 	const { getMovies, movies } = fetchMoviesData
 
 	// search movies
-
 	useEffect(() => {
-		getMovies()
-	}, [])
+		getMovies(`${currentPage}`)
+	}, [currentPage])
+
+	const handleCurrentPage = (
+		page: TypeCategories['page'],
+		category: string
+	) => {
+		setCurrentPage(page)
+		setActive(category)
+	}
+
 	return (
 		<main className='px-4 mt-16 lg:px-0'>
 			{/* Categories */}
@@ -23,10 +32,10 @@ export const Movies = () => {
 						className='text-gray-400 font-normal text-[1.3em] hover:text-gray-200 transition duration-300'
 						key={i}
 						to='#'
-						style={{ color: isActive === i ? '#87959F' : '#444444' }}
-						onClick={() => setActive(i)}
+						style={{ color: isActive === cat.category ? '#87959F' : '#444444' }}
+						onClick={() => handleCurrentPage(cat.page, cat.category)}
 					>
-						{cat}
+						{cat.category}
 					</Link>
 				))}
 			</nav>
@@ -39,7 +48,9 @@ export const Movies = () => {
 					className={`w-full grid grid-cols-6 auto-rows-max ${'grid'} gap-4`}
 				>
 					{movies.map(m => (
-						<Card key={m.mal_id} {...m} />
+						<Link to={`/item/${m.mal_id}`} key={m.mal_id}>
+							<Card {...m} />
+						</Link>
 					))}
 				</div>
 			</section>

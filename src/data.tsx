@@ -1,9 +1,12 @@
-export const categories: string[] = [
-	'Все',
-	'Сериалы',
-	'Онгоинги',
-	'Фильмы',
-	'Закладки',
+import { bookmarkStore } from './store/bookmarks'
+import { TypeCategories } from './types'
+
+export const categories: TypeCategories[] = [
+	{ category: 'Все', page: 3 },
+	{ category: 'Сериалы', page: 5 },
+	{ category: 'Онгоинги', page: 3 },
+	{ category: 'Фильмы', page: 2 },
+	{ category: 'Закладки', page: () => bookmarkStore.getBookmarks() },
 ]
 
 export const advantages: string[] = [

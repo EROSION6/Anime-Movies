@@ -3,7 +3,7 @@ import { Play } from 'lucide-react'
 
 interface iCardProps {
 	images: {
-		jpg: {
+		webp: {
 			image_url: string
 		}
 	}
@@ -25,7 +25,7 @@ export const Card = ({ images, title, episodes, score, aired }: iCardProps) => (
 	>
 		<div className='w-full flex items-center justify-center'>
 			<img
-				src={images.jpg.image_url}
+				src={images.webp.image_url}
 				alt='anime'
 				className='w-full h-72 object-cover rounded-xl'
 			/>
