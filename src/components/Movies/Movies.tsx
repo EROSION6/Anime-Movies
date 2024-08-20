@@ -26,17 +26,16 @@ export const Movies = () => {
 	return (
 		<main className='px-4 mt-16 lg:px-0'>
 			{/* Categories */}
-			<nav className='space-x-8 border-b border-white-200 pb-4  xl:hidden'>
+			<nav className='flex space-x-8 border-b border-white-200 pb-4 xl:hidden'>
 				{categories.map((cat, i) => (
-					<Link
-						className='text-gray-400 font-normal text-[1.3em] hover:text-gray-200 transition duration-300'
+					<li
 						key={i}
-						to='#'
+						className='text-gray-400 font-normal text-[1.3em] hover:text-gray-200 transition duration-300 cursor-pointer'
 						style={{ color: isActive === cat.category ? '#87959F' : '#444444' }}
 						onClick={() => handleCurrentPage(cat.page, cat.category)}
 					>
 						{cat.category}
-					</Link>
+					</li>
 				))}
 			</nav>
 			<section className='pt-6'>

@@ -26,13 +26,6 @@ class fetchMovies {
 			console.error(err)
 		}
 	}
-
-	searchMovie = (query: string) => {
-		this.searchQuery = query
-		this.filteredMovies = this.movies.filter(mov =>
-			mov.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-		)
-	}
 }
 
 export const fetchMoviesData = new fetchMovies()

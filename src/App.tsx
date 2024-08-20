@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { Footer } from './components/Footer'
-import { Navbar } from './components/Navbar'
+import { Navbar } from './components/Navbar/Navbar'
 import { AnimeItem } from './pages/AnimeItem'
 import { Home } from './pages/Home'
 import { Search } from './pages/Search'
